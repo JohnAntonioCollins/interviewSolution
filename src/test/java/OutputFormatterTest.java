@@ -36,6 +36,6 @@ public class OutputFormatterTest
     @Test
     public void formatForPrintToScreenTest(){
         actual = outputFormatter.formatForPrintToScreen(characterCounter);
-        assertEquals(expected, actual);
+        assertEquals(".formatForPrintToScreen should build a string like this.", expected, actual);
     }
 }

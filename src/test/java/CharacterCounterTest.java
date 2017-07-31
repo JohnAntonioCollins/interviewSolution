@@ -32,7 +32,6 @@ public class CharacterCounterTest
     public void count_Test(){
         characterCounter.count("abc ddeeff");
         Map actual = characterCounter.counter;
-        System.out.println(actual);
-        assertEquals(expected, actual);
+        assertEquals(".count should build a map like this", expected, actual);
     }
 }

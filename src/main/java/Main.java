@@ -10,17 +10,22 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan;
         String word;
-        CharacterCounter characterCounter = new CharacterCounter();
-        OutputFormatter outputFormatter = new OutputFormatter();
-        String prefferredOutputFormat;
+        CharacterCounter characterCounter;
+        OutputFormatter outputFormatter;
+        String preferredOutputFormat;
+
+        scan = new Scanner(System.in);
+        characterCounter = new CharacterCounter();
+        outputFormatter = new OutputFormatter();
+
 
         System.out.println("enter a word");
         word = scan.nextLine();
         characterCounter.count(word);
-        prefferredOutputFormat = outputFormatter.formatForPrintToScreen(characterCounter);
-        System.out.println(prefferredOutputFormat);
+        preferredOutputFormat = outputFormatter.formatForPrintToScreen(characterCounter);
+        System.out.println(preferredOutputFormat);
     }
 }
 
@@ -48,24 +53,21 @@ class CharacterCounter
 class OutputFormatter
 {
     StringBuffer stringBuffer;
-    String outputBeingComposed;
     String prefix;
     String formattedOutput;
 
     String formatForPrintToScreen(CharacterCounter characterCounter)
     {
         stringBuffer = new StringBuffer();
-        outputBeingComposed = "";
         prefix = "";
 
         for (Map.Entry<Character, Integer> entry : characterCounter.counter.entrySet())
         {
             stringBuffer.append(prefix);
-            stringBuffer.append("\"" + entry.getKey() + "\" =" + entry.getValue());
+            stringBuffer.append("\"" + entry.getKey() + "\"=" + entry.getValue());
             prefix = ", ";
         }
-        outputBeingComposed = stringBuffer.toString();
-        formattedOutput = outputBeingComposed;
+        formattedOutput = stringBuffer.toString();
         return formattedOutput;
     }
 }
